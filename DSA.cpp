@@ -765,45 +765,30 @@ void InfixtoPrefix() {
     str = rev;
 
     for (int i=0; i<str.length(); i++) {
-        if (str[i] == '(')
-            str[i] == ')';
-        else if (str[i] == ')')
-            str[i] == '(';
-        else if (str[i] == '{')
-            str[i] == '}';
-        else if (str[i] == '}')
-            str[i] == '{';
-        else if (str[i] == '[')
-            str[i] == ']';
-        else if (str[i] == ']')
-            str[i] == '[';
-    }
-
-    for (int i=0; i<str.length(); i++) {
 
         if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= '0' && str[i] <= '9')) {
             postfix += str[i];
         }
 
-        else if (str[i] == '(' || str[i] == '{' || str[i] == '[') {
+        else if (str[i] == ')' || str[i] == '}' || str[i] == ']') {
             s.push(str[i]);
         }
  
-        else if (str[i] == ')' || str[i] == '}' || str[i] == ']') {
-            if (str[i] == ')') {
-                while (s.first() != '(') {
+        else if (str[i] == '(' || str[i] == '{' || str[i] == '[') {
+            if (str[i] == '(') {
+                while (s.first() != ')') {
                     postfix += s.pop();
                 }
                 s.pop();
             }
-            else if (str[i] == '}') {
-                while (s.first() != '{') {
+            else if (str[i] == '{') {
+                while (s.first() != '}') {
                     postfix += s.pop();
                 }
                 s.pop();
             }
-            else if (str[i] == ']') {
-                while (s.first() != '[') {
+            else if (str[i] == '[') {
+                while (s.first() != ']') {
                     postfix += s.pop();
                 }
                 s.pop();
@@ -828,4 +813,3 @@ void InfixtoPrefix() {
     cout << prefix << endl << endl;
 
 }
-
