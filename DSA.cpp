@@ -315,7 +315,7 @@ void matrixMult() {
         }
         int **arr2 = new int *[row2];
         for (int i=0; i<row2; i++) {
-            arr1[i] = new int [column2];
+            arr2[i] = new int [column2];
         }
         
         for (int i=0; i<row1; i++) {
