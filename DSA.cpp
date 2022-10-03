@@ -317,7 +317,7 @@ void matrixMult() {
         for (int i=0; i<row2; i++) {
             arr1[i] = new int [column2];
         }
-
+        
         for (int i=0; i<row1; i++) {
             for (int j=0; j<column1; j++) {
                 cout << "[" << i+1 << "][" << j+1 << "] = ";
@@ -353,14 +353,19 @@ void matrixMult() {
             }
         }
 
-        // Deleted Dynamic Arrays made previously.
+        cout << endl << endl;
+
+        //Deleted Dynamic Arrays made previously.
 
         for (int i=0; i<row1; i++) {
-            delete[] arr[i];
             delete[] arr1[i];
+            delete[] arr[i];
+            arr1[i] = NULL;
+            arr[i] = NULL;
         }
         for (int i=0; i<row2; i++) {
             delete[] arr2[i];
+            arr2[i] = NULL;
         }
         delete[] arr;
         delete[] arr1;
