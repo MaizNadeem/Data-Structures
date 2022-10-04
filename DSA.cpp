@@ -93,6 +93,7 @@ int main() {
             break;
         case 19:
             EvaluatePostfix();
+            break;
         case 0:
             break;
         default:
