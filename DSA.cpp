@@ -22,6 +22,7 @@ void deciToBinary();
 void balancedExp();
 void InfixtoPostfix();
 void InfixtoPrefix();
+void EvaluatePostfix();
 
 
 int main() {
@@ -30,70 +31,72 @@ int main() {
 
     do {
 
-        cout << "Enter the action you want to perform:\n\t01: Factorial.\n\t02: Fibonacci Series.\n\t03: Greatest Common Divisor.\n\t04: Number of Digits.\n\t05: Reverse of a number.\n\t06: Least Common Multiple.\n\t07: Prime numbers between 1-100.\n\t08: Square root of a number.\n\t09: Profit-Loss calculator.\n\t10: Sum of Squares of natural number.\n\t11: Sum of Factorials.\n\t12. Matrix Multiplication.\n\t13. Transpose of a matrix.\n\t14. Student Structures.\n\t15: Decimal to Binary Converter.\n\t16: Check balanced paranthesis of an expression.\n\t17: Infix to Postfix.\n\t18: Infix to Prefix.\n\t00: Exit." << endl << endl;
+        cout << "Enter the action you want to perform:\n\t01: Factorial.\n\t02: Fibonacci Series.\n\t03: Greatest Common Divisor.\n\t04: Number of Digits.\n\t05: Reverse of a number.\n\t06: Least Common Multiple.\n\t07: Prime numbers between 1-100.\n\t08: Square root of a number.\n\t09: Profit-Loss calculator.\n\t10: Sum of Squares of natural number.\n\t11: Sum of Factorials.\n\t12. Matrix Multiplication.\n\t13. Transpose of a matrix.\n\t14. Student Structures.\n\t15: Decimal to Binary Converter.\n\t16: Check balanced paranthesis of an expression.\n\t17: Infix to Postfix.\n\t18: Infix to Prefix.\n\t19: Evaluate Postfix.\n\t00: Exit." << endl << endl;
 
         cin >> num;
 
         switch (num) {
 
-            case 1:
-                factorial();
-                break;
-            case 2:
-                fibonacci();
-                break;
-            case 3:
-                gcd();
-                break;
-            case 4:
-                numOfDigits();
-                break;
-            case 5:
-                reverseOfNum();
-                break;
-            case 6:
-                lcm();
-                break;
-            case 7:
-                primeNumbers();
-                break;
-            case 8:
-                sqrt();
-                break;
-            case 9:
-                profitLoss();
-                break;
-            case 10:
-                sumOfSquares();
-                break;
-            case 11:
-                sumOfFactorials();
-                break;
-            case 12:
-                matrixMult();
-                break;
-            case 13:
-                transpose();
-                break;
-            case 14:
-                studentsStruct();
-                break;
-            case 15:
-                deciToBinary();
-                break;
-            case 16:
-                balancedExp();
-                break;
-            case 17: 
-                InfixtoPostfix();
-                break;
-            case 18: 
-                InfixtoPrefix();
-                break;
-            case 0:
-                break;
-            default:
-                cout << "\nCorresponding number is incorrect.";
+        case 1:
+            factorial();
+            break;
+        case 2:
+            fibonacci();
+            break;
+        case 3:
+            gcd();
+            break;
+        case 4:
+            numOfDigits();
+            break;
+        case 5:
+            reverseOfNum();
+            break;
+        case 6:
+            lcm();
+            break;
+        case 7:
+            primeNumbers();
+            break;
+        case 8:
+            sqrt();
+            break;
+        case 9:
+            profitLoss();
+            break;
+        case 10:
+            sumOfSquares();
+            break;
+        case 11:
+            sumOfFactorials();
+            break;
+        case 12:
+            matrixMult();
+            break;
+        case 13:
+            transpose();
+            break;
+        case 14:
+            studentsStruct();
+            break;
+        case 15:
+            deciToBinary();
+            break;
+        case 16:
+            balancedExp();
+            break;
+        case 17:
+            InfixtoPostfix();
+            break;
+        case 18:
+            InfixtoPrefix();
+            break;
+        case 19:
+            EvaluatePostfix();
+        case 0:
+            break;
+        default:
+            cout << "\nCorresponding number is incorrect.";
         }
 
     } while (num != 0);
@@ -101,7 +104,7 @@ int main() {
     return 0;
 }
 
-void factorial () {
+void factorial() {
     int num;
     int fact = 1;
     cout << "\nEnter an integer: ";
@@ -112,11 +115,11 @@ void factorial () {
         for (int i = 1; i <= num; i++) {
             fact *= i;
         }
-        cout << "Factorial of " << num <<  " = " << fact << endl << endl;
+        cout << "Factorial of " << num << " = " << fact << endl << endl;
     }
 }
 
-void fibonacci () {
+void fibonacci() {
 
     int term;
     int num1 = 0;
@@ -126,7 +129,7 @@ void fibonacci () {
     cout << "\nEnter the number of terms: ";
     cin >> term;
 
-    for (int i=0; i<term; i++) {
+    for (int i = 0; i < term; i++) {
         cout << num1 << " ";
         next = num1 + num2;
         num1 = num2;
@@ -135,7 +138,7 @@ void fibonacci () {
     cout << "\n" << endl;
 }
 
-void gcd () {
+void gcd() {
     int num1;
     int num2;
     int gcd;
@@ -145,14 +148,14 @@ void gcd () {
     cout << "Enter the second integer: ";
     cin >> num2;
 
-    for(int i=1; i<=num1 && i<=num2; i++) {
-        if(num1%i==0 && num2%i==0)
+    for (int i = 1; i <= num1 && i <= num2; i++) {
+        if (num1 % i == 0 && num2 % i == 0)
             gcd = i;
     }
     cout << "G.C.D of " << num1 << " and " << num2 << " is: " << gcd << endl << endl;
 }
 
-void numOfDigits () {
+void numOfDigits() {
     int num;
     int count;
     cout << "\nEnter the number: ";
@@ -161,7 +164,7 @@ void numOfDigits () {
     cout << "Number of digits: " << count << endl << endl;
 }
 
-void reverseOfNum () {
+void reverseOfNum() {
     int num = 0;
     int reverse = 0;
     cout << "\nEnter a number for ts reverse: ";
@@ -169,14 +172,14 @@ void reverseOfNum () {
 
     while (num != 0) {
         reverse *= 10;
-        reverse += num%10;
+        reverse += num % 10;
         num /= 10;
     }
 
     cout << "Reverse of the number = " << reverse << endl << endl;
 }
 
-void lcm () {
+void lcm() {
     int num1;
     int num2;
     int gcd;
@@ -186,11 +189,11 @@ void lcm () {
     cout << "Enter the second integer: ";
     cin >> num2;
 
-    for(int i=1; i<=num1 && i<=num2; i++) {
-        if(num1%i==0 && num2%i==0)
+    for (int i = 1; i <= num1 && i <= num2; i++) {
+        if (num1 % i == 0 && num2 % i == 0)
             gcd = i;
     }
-    int lcm = (num1*num2)/gcd;
+    int lcm = (num1 * num2) / gcd;
     cout << "L.C.M of " << num1 << " and " << num2 << " is: " << lcm << endl << endl;
 }
 
@@ -199,18 +202,18 @@ void primeNumbers() {
     int count;
     int a = 1;
 
-    while(a <= 100) {
+    while (a <= 100) {
         i = 2;
         count = 0;
 
-        while(i <= a/2) {
-            if(a%i == 0) {
+        while (i <= a / 2) {
+            if (a % i == 0) {
                 count++;
                 break;
             }
             i++;
         }
-        if(count==0 && a!=1) {
+        if (count == 0 && a != 1) {
             cout << a << " ";
         }
         a++;
@@ -243,15 +246,15 @@ void profitLoss() {
     cout << "Enter the earnings: ";
     cin >> amt;
 
-    if ((amt-total) < 0) {
-        double loss = -1*(amt-total);
-        double lossPercent = (loss/total)*100;
+    if ((amt - total) < 0) {
+        double loss = -1 * (amt - total);
+        double lossPercent = (loss / total) * 100;
         printf("Total loss is: %.0f", loss);
         printf("\nTotal loss percentage is: %.2f\n\n", lossPercent);
     }
-    else if ((amt-total) >= 0){
-        double profit = amt-total;
-        double profitPercent = (profit/total)*100;
+    else if ((amt - total) >= 0) {
+        double profit = amt - total;
+        double profitPercent = (profit / total) * 100;
         printf("Total profit is: %.0f", profit);
         printf("\nTotal profit percentage is: %.2f\n\n", profitPercent);
     }
@@ -263,8 +266,8 @@ void sumOfSquares() {
     int sum = 0;
     cout << "Enter the number: ";
     cin >> num;
-    while(count<=num) {
-        sum += count*count;
+    while (count <= num) {
+        sum += count * count;
         count++;
     }
     cout << "Sum of Squares is: " << sum << endl << endl;
@@ -276,12 +279,12 @@ void sumOfFactorials() {
     float sum = 0;
     cout << "\nEnter the number: ";
     cin >> num;
-    while(count<=num) {
+    while (count <= num) {
         float fact = 1;
         for (int i = 1; i <= count; i++) {
             fact *= i;
         }
-        sum += 1/fact;
+        sum += 1 / fact;
         count++;
     }
     cout << "Sum of all Factorials is: " << sum << endl << endl;
@@ -305,51 +308,51 @@ void matrixMult() {
         cout << "These matrices cannot be multiplied" << endl << endl;
     }
     else {
-        int **arr = new int *[row1];
-        for (int i=0; i<row1; i++) {
-            arr[i] = new int [column2];
+        int** arr = new int* [row1];
+        for (int i = 0; i < row1; i++) {
+            arr[i] = new int[column2];
         }
-        int **arr1 = new int *[row1];
-        for (int i=0; i<row1; i++) {
-            arr1[i] = new int [column1];
+        int** arr1 = new int* [row1];
+        for (int i = 0; i < row1; i++) {
+            arr1[i] = new int[column1];
         }
-        int **arr2 = new int *[row2];
-        for (int i=0; i<row2; i++) {
-            arr2[i] = new int [column2];
+        int** arr2 = new int* [row2];
+        for (int i = 0; i < row2; i++) {
+            arr2[i] = new int[column2];
         }
-        
-        for (int i=0; i<row1; i++) {
-            for (int j=0; j<column1; j++) {
-                cout << "[" << i+1 << "][" << j+1 << "] = ";
+
+        for (int i = 0; i < row1; i++) {
+            for (int j = 0; j < column1; j++) {
+                cout << "[" << i + 1 << "][" << j + 1 << "] = ";
                 cin >> arr1[i][j];
             }
         }
         cout << endl;
-        for (int i=0; i<row2; i++) {
-            for (int j=0; j<column2; j++) {
-                cout << "[" << i+1 << "][" << j+1 << "] = ";
+        for (int i = 0; i < row2; i++) {
+            for (int j = 0; j < column2; j++) {
+                cout << "[" << i + 1 << "][" << j + 1 << "] = ";
                 cin >> arr2[i][j];
             }
         }
         cout << endl;
-        for (int i=0; i<row1; i++) {
-            for (int j=0; j<column2; j++) {
+        for (int i = 0; i < row1; i++) {
+            for (int j = 0; j < column2; j++) {
                 arr[i][j] = 0;
             }
         }
 
-        for (int i=0; i<row1; i++) {
-            for (int j=0; j<column2; j++) {
-                for (int k=0; k<column1; k++) {
-                    arr[i][j] += arr1[i][k]*arr2[k][j];
+        for (int i = 0; i < row1; i++) {
+            for (int j = 0; j < column2; j++) {
+                for (int k = 0; k < column1; k++) {
+                    arr[i][j] += arr1[i][k] * arr2[k][j];
                 }
             }
         }
 
         cout << endl << "Output Matrix: " << endl;
-        for (int i=0; i<row1; i++) {
-            for (int j=0; j<column2; j++) {
-                cout << "[" << i+1 << "][" << j+1 << "] = " << arr[i][j] << endl;
+        for (int i = 0; i < row1; i++) {
+            for (int j = 0; j < column2; j++) {
+                cout << "[" << i + 1 << "][" << j + 1 << "] = " << arr[i][j] << endl;
             }
         }
 
@@ -357,13 +360,13 @@ void matrixMult() {
 
         //Deleted Dynamic Arrays made previously.
 
-        for (int i=0; i<row1; i++) {
+        for (int i = 0; i < row1; i++) {
             delete[] arr1[i];
             delete[] arr[i];
             arr1[i] = NULL;
             arr[i] = NULL;
         }
-        for (int i=0; i<row2; i++) {
+        for (int i = 0; i < row2; i++) {
             delete[] arr2[i];
             arr2[i] = NULL;
         }
@@ -386,40 +389,40 @@ void transpose() {
     cin >> column;
     cout << endl;
 
-    int **arr = new int *[row];
-    for (int i=0; i<row; i++) {
-        arr[i] = new int [column];
+    int** arr = new int* [row];
+    for (int i = 0; i < row; i++) {
+        arr[i] = new int[column];
     }
-    int **trans = new int *[row];
-    for (int i=0; i<row; i++) {
-        trans[i] = new int [column];
+    int** trans = new int* [row];
+    for (int i = 0; i < row; i++) {
+        trans[i] = new int[column];
     }
 
-    for (int i=0; i<row; i++) {
-        for (int j=0; j<column; j++) {
-            cout << "[" << i+1 << "][" << j+1 << "] = ";
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < column; j++) {
+            cout << "[" << i + 1 << "][" << j + 1 << "] = ";
             cin >> arr[i][j];
         }
     }
     cout << endl;
 
-    for (int i=0; i<row; i++) {
-        for (int j=0; j<column; j++) {
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < column; j++) {
             trans[i][j] = arr[j][i];
         }
     }
 
 
-    for (int i=0; i<row; i++) {
-        for (int j=0; j<column; j++) {
-            cout << "[" << i+1 << "][" << j+1 << "] = " << trans[i][j] << endl;
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < column; j++) {
+            cout << "[" << i + 1 << "][" << j + 1 << "] = " << trans[i][j] << endl;
         }
     }
     cout << endl;
 
     //Deleting Dynamic Arrays made previously.
 
-    for (int i=0; i<row; i++) {
+    for (int i = 0; i < row; i++) {
         delete[] arr[i];
         delete[] trans[i];
     }
@@ -450,10 +453,10 @@ void studentsStruct() {
     s3.subject = "OOP";
     s3.cgpa = 3.7;
 
-    Student s[3] = {s1, s2, s3};
+    Student s[3] = { s1, s2, s3 };
 
-    for (int i=0; i<3; i++) {
-        if (s[i].subject == "DSA" && s[i].cgpa>3.0) {
+    for (int i = 0; i < 3; i++) {
+        if (s[i].subject == "DSA" && s[i].cgpa > 3.0) {
             cout << s[i].name << endl << endl;
         }
     }
@@ -466,7 +469,7 @@ void deciToBinary() {
         int array[100];
 
         void push(int num) {
-            if (top == (sizeof(array)/sizeof(array[0]))-1) {
+            if (top == (sizeof(array) / sizeof(array[0])) - 1) {
                 cout << "Sorry, stack is full." << endl;
             }
             else {
@@ -504,7 +507,7 @@ void deciToBinary() {
     cout << "The Binary representation is: ";
 
     while (num >= 1) {
-        s.push(num%2);
+        s.push(num % 2);
         num /= 2;
     }
     while (!s.empty()) {
@@ -520,7 +523,7 @@ void balancedExp() {
         char array[100];
 
         void push(char symbol) {
-            if (top == (sizeof(array)/sizeof(array[0]))-1) {
+            if (top == (sizeof(array) / sizeof(array[0])) - 1) {
                 cout << "Sorry, stack is full." << endl;
             }
             else {
@@ -561,12 +564,12 @@ void balancedExp() {
     cin.ignore();
     std::getline(cin, str);
 
-    for (int i=0; i<str.length(); i++) {
+    for (int i = 0; i < str.length(); i++) {
         if (str[i] == '[' || str[i] == '{' || str[i] == '(' || str[i] == ')' || str[i] == '}' || str[i] == ']') {
             if (s.empty()) {
                 s.push(str[i]);
             }
-            else if ((s.first() == '(' && str[i] == ')')  || (s.first() == '{' && str[i] == '}') || (s.first() == '[' && str[i] == ']')) {
+            else if ((s.first() == '(' && str[i] == ')') || (s.first() == '{' && str[i] == '}') || (s.first() == '[' && str[i] == ']')) {
                 s.pop();
             }
             else {
@@ -575,7 +578,7 @@ void balancedExp() {
         }
     }
 
-    if(s.empty()) {
+    if (s.empty()) {
         cout << "The Expression is Balanced." << endl << endl;
     }
     else {
@@ -589,7 +592,7 @@ void InfixtoPostfix() {
         int top = -1;
         char array[100];
 
-        int prec (char c) {
+        int prec(char c) {
             if (c == '^') {
                 return 3;
             }
@@ -605,7 +608,7 @@ void InfixtoPostfix() {
         }
 
         void push(char symbol) {
-            if (top == (sizeof(array)/sizeof(array[0]))-1) {
+            if (top == (sizeof(array) / sizeof(array[0])) - 1) {
                 cout << "Sorry, stack is full." << endl;
             }
             else {
@@ -647,7 +650,7 @@ void InfixtoPostfix() {
     cin.ignore();
     std::getline(cin, str);
 
-    for (int i=0; i<str.length(); i++) {
+    for (int i = 0; i < str.length(); i++) {
 
         if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= '0' && str[i] <= '9')) {
             postfix += str[i];
@@ -656,7 +659,7 @@ void InfixtoPostfix() {
         else if (str[i] == '(' || str[i] == '{' || str[i] == '[') {
             s.push(str[i]);
         }
- 
+
         else if (str[i] == ')' || str[i] == '}' || str[i] == ']') {
             if (str[i] == ')') {
                 while (s.first() != '(') {
@@ -687,7 +690,7 @@ void InfixtoPostfix() {
     }
 
     while (!s.empty()) {
-        postfix += s.pop();  
+        postfix += s.pop();
     }
 
     cout << postfix << endl << endl;
@@ -700,7 +703,7 @@ void InfixtoPrefix() {
         int top = -1;
         char array[100];
 
-        int prec (char c) {
+        int prec(char c) {
             if (c == '^') {
                 return 3;
             }
@@ -716,7 +719,7 @@ void InfixtoPrefix() {
         }
 
         void push(char symbol) {
-            if (top == (sizeof(array)/sizeof(array[0]))-1) {
+            if (top == (sizeof(array) / sizeof(array[0])) - 1) {
                 cout << "Sorry, stack is full." << endl;
             }
             else {
@@ -759,12 +762,12 @@ void InfixtoPrefix() {
     std::getline(cin, str);
 
     string rev = "";
-    for (int i = str.length()-1; i >= 0; i--)
+    for (int i = str.length() - 1; i >= 0; i--)
         rev.push_back(str[i]);
 
     str = rev;
 
-    for (int i=0; i<str.length(); i++) {
+    for (int i = 0; i < str.length(); i++) {
 
         if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= '0' && str[i] <= '9')) {
             postfix += str[i];
@@ -773,7 +776,7 @@ void InfixtoPrefix() {
         else if (str[i] == ')' || str[i] == '}' || str[i] == ']') {
             s.push(str[i]);
         }
- 
+
         else if (str[i] == '(' || str[i] == '{' || str[i] == '[') {
             if (str[i] == '(') {
                 while (s.first() != ')') {
@@ -804,12 +807,91 @@ void InfixtoPrefix() {
     }
 
     while (!s.empty()) {
-        postfix += s.pop();  
+        postfix += s.pop();
     }
 
     string prefix = "";
-    for (int i = postfix.length()-1; i >= 0; i--)
+    for (int i = postfix.length() - 1; i >= 0; i--)
         prefix.push_back(postfix[i]);
     cout << prefix << endl << endl;
+
+}
+
+void EvaluatePostfix() {
+
+    struct Stack {
+        int top = -1;
+        int array[100];
+
+        void push(int symbol) {
+            if (top == (sizeof(array) / sizeof(array[0])) - 1) {
+                cout << "Sorry, stack is full." << endl;
+            }
+            else {
+                top++;
+                array[top] = symbol;
+            }
+        }
+
+        int pop() {
+            if (top == -1) {
+                cout << "Sorry, stack is empty." << endl;
+            }
+            else {
+                int popped = array[top];
+                array[top] = 0;
+                top--;
+                return popped;
+            }
+        }
+
+        bool empty() {
+            if (top == -1) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    };
+
+    Stack s;
+    int answer;
+    string str = "";
+    cout << "Enter a postfix expression: ";
+    cin.ignore();
+    std::getline(cin, str);
+    
+
+    for (int i = 0; i < str.length()-1; i++) {
+
+        if (isdigit(str[i])) {
+            int temp = str[i] - '0';
+            s.push(temp);
+        }
+        else {
+            int  b = s.pop();
+            int a = s.pop();
+            if (str[i] == '+') {
+                answer = a + b;
+            }
+            else if (str[i] == '-') {
+                answer = a - b;
+            }
+            else if (str[i] == '/') {
+                answer = a / b;
+            }
+            else if (str[i] == '*') {
+                answer = a * b;
+            }
+            else if (str[i] == '^') {
+                answer = pow(a, b);
+            }
+            s.push(answer);
+        }
+    }
+
+    cout << "The answer is: " << s.pop() << endl << endl;
+    
 
 }
