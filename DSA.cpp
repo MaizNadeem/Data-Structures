@@ -1,8 +1,13 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <algorithm>
 
 using namespace std;
+
+void basicTasks();
+void structsAndArrays2D();
+void stackApplications();
 
 void factorial();
 void fibonacci();
@@ -20,9 +25,10 @@ void transpose();
 void studentsStruct();
 void deciToBinary();
 void balancedExp();
-void InfixtoPostfix();
-void InfixtoPrefix();
-void EvaluatePostfix();
+void infixtoPostfix();
+void infixtoPrefix();
+void evaluatePostfix();
+void towerOfHanoi();
 
 
 int main() {
@@ -30,13 +36,48 @@ int main() {
     int num;
 
     do {
-
-        cout << "Enter the action you want to perform:\n\t01: Factorial.\n\t02: Fibonacci Series.\n\t03: Greatest Common Divisor.\n\t04: Number of Digits.\n\t05: Reverse of a number.\n\t06: Least Common Multiple.\n\t07: Prime numbers between 1-100.\n\t08: Square root of a number.\n\t09: Profit-Loss calculator.\n\t10: Sum of Squares of natural number.\n\t11: Sum of Factorials.\n\t12. Matrix Multiplication.\n\t13. Transpose of a matrix.\n\t14. Student Structures.\n\t15: Decimal to Binary Converter.\n\t16: Check balanced paranthesis of an expression.\n\t17: Infix to Postfix.\n\t18: Infix to Prefix.\n\t19: Evaluate Postfix.\n\t00: Exit." << endl << endl;
+        cout << "\nSelect a category:" << endl;
+        cout << "\n\t1: Basic Tasks.\n\t2: Structs and 2D Arrays.\n\t3: Stack Applications\n\t0: Exit." << endl << endl;
 
         cin >> num;
 
-        switch (num) {
+        system("CLS");
 
+        switch (num) {
+        case 1:
+            basicTasks();
+            break;
+        case 2:
+            structsAndArrays2D();
+            break;
+        case 3:
+            stackApplications();
+            break;
+        case 0:
+            break;
+        default:
+            break;
+        }
+        if (!(num >= 0 && num <= 3))
+            cout << "\nCorresponding number is incorrect.";
+
+    } while (num != 0);
+
+    return 0;
+}
+
+void basicTasks() {
+    int num;
+
+    do {
+        std::cout << "\nEnter the corresponding number: " << endl;
+        std::cout << "\n\t01: Factorial of an integer.\n\t02: Print Fibonacci Series till a range.\n\t03: Greatest Common Divisor of two integers.\n\t04: Number of Digits in an integer.\n\t05: Reverse of an integer.\n\t06: Least Common Multiple of two numbers.\n\t07: Print Prime numbers between 1-100.\n\t08: Square root of an integer.\n\t09: Profit-Loss calculator.\n\t10: Sum of squares of natural number.\n\t11: Sum of inverse of Factorials.\n\t00: Main Menu." << endl << endl;
+
+        std::cin >> num;
+
+        system("CLS");
+
+        switch (num) {
         case 1:
             factorial();
             break;
@@ -70,40 +111,91 @@ int main() {
         case 11:
             sumOfFactorials();
             break;
-        case 12:
+        case 0:
+            break;
+        default:
+            break;
+        }
+
+        if (!(num <= 11 && num >= 0))
+            std::cout << "\nCorresponding number is incorrect." << endl;
+    } while (num != 0);
+}
+
+void structsAndArrays2D() {
+    int num;
+
+    do {
+        std::cout << "\nEnter the corresponding number: " << endl;
+        std::cout << "\n\t1. Matrix Multiplication.\n\t2. Transpose of a matrix.\n\t3. Structure of Students.\n\t0: Main Menu." << endl << endl;
+
+        std::cin >> num;
+
+        system("CLS");
+
+        switch (num) {
+        case 1:
             matrixMult();
             break;
-        case 13:
+        case 2:
             transpose();
             break;
-        case 14:
+        case 3:
             studentsStruct();
-            break;
-        case 15:
-            deciToBinary();
-            break;
-        case 16:
-            balancedExp();
-            break;
-        case 17:
-            InfixtoPostfix();
-            break;
-        case 18:
-            InfixtoPrefix();
-            break;
-        case 19:
-            EvaluatePostfix();
             break;
         case 0:
             break;
         default:
-            cout << "\nCorresponding number is incorrect.";
+            break;
         }
 
+        if (!(num <= 11 && num >= 0))
+            std::cout << "\nCorresponding number is incorrect." << endl;
     } while (num != 0);
-
-    return 0;
 }
+
+void stackApplications() {
+    int num;
+
+    do {
+        std::cout << "\nEnter the corresponding number: " << endl;
+        std::cout << "\n\t1: Decimal to Binary Converter.\n\t2: Check balanced paranthesis of an expression.\n\t3: Infix to Postfix.\n\t4: Infix to Prefix.\n\t5: Evaluate Postfix.\n\t6: Tower of Hanoi.\n\t0: Main Menu." << endl << endl;
+
+        std::cin >> num;
+
+        system("CLS");
+
+        switch (num) {
+        case 1:
+            deciToBinary();
+            break;
+        case 2:
+            balancedExp();
+            break;
+        case 3:
+            infixtoPostfix();
+            break;
+        case 4:
+            infixtoPrefix();
+            break;
+        case 5:
+            evaluatePostfix();
+            break;
+        case 6:
+            towerOfHanoi();
+            break;
+        case 0:
+            break;
+        default:
+            break;
+        }
+
+        if (!(num <= 6 && num >= 0))
+            std::cout << "\nCorresponding number is incorrect." << endl;
+    } while (num != 0);
+}
+
+
 
 void factorial() {
     int num;
@@ -380,6 +472,36 @@ void matrixMult() {
     }
 }
 
+void studentsStruct() {
+    struct Student {
+        string name;
+        string subject;
+        double cgpa;
+    };
+
+    Student s1, s2, s3;
+
+    s1.name = "John";
+    s1.subject = "DSA";
+    s1.cgpa = 3.4;
+
+    s2.name = "Mary";
+    s2.subject = "LA";
+    s2.cgpa = 2.7;
+
+    s3.name = "Amir Liaqat";
+    s3.subject = "OOP";
+    s3.cgpa = 3.7;
+
+    Student s[3] = { s1, s2, s3 };
+
+    for (int i = 0; i < 3; i++) {
+        if (s[i].subject == "DSA" && s[i].cgpa > 3.0) {
+            cout << s[i].name << endl << endl;
+        }
+    }
+}
+
 void transpose() {
 
     int row, column;
@@ -433,76 +555,75 @@ void transpose() {
     trans = NULL;
 }
 
-void studentsStruct() {
-    struct Student {
-        string name;
-        string subject;
-        double cgpa;
-    };
+template <class T> class GenericStack {
+    int top = -1;
+    T array[50];
 
-    Student s1, s2, s3;
+public:
 
-    s1.name = "John";
-    s1.subject = "DSA";
-    s1.cgpa = 3.4;
-
-    s2.name = "Mary";
-    s2.subject = "LA";
-    s2.cgpa = 2.7;
-
-    s3.name = "Amir Liaqat";
-    s3.subject = "OOP";
-    s3.cgpa = 3.7;
-
-    Student s[3] = { s1, s2, s3 };
-
-    for (int i = 0; i < 3; i++) {
-        if (s[i].subject == "DSA" && s[i].cgpa > 3.0) {
-            cout << s[i].name << endl << endl;
+    int prec(char c) {
+        if (c == '^') {
+            return 3;
+        }
+        else if (c == '/' || c == '*') {
+            return 2;
+        }
+        else if (c == '+' || c == '-') {
+            return 1;
+        }
+        else {
+            return -1;
         }
     }
-}
+
+    void push(T num) {
+        if (top == (sizeof(array) / sizeof(array[0])) - 1) {
+            cout << "Sorry, stack is full." << endl;
+        }
+        else {
+            top++;
+            array[top] = num;
+        }
+    }
+
+    T pop() {
+        if (top == -1) {
+        }
+        else {
+            T popped = array[top];
+            array[top] = 0;
+            top--;
+            return popped;
+        }
+    }
+
+    bool empty() {
+        if (top == -1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    char first() {
+        return array[top];
+    }
+
+    void display(int n) {
+        cout << "Rod " << n << "-> " << "\t";
+        for (int i = 0; i <= top; i++) {
+            cout << array[i] << "  ";
+        }
+        cout << endl;
+    }
+
+};
 
 void deciToBinary() {
 
-    struct Stack {
-        int top = -1;
-        int array[100];
-
-        void push(int num) {
-            if (top == (sizeof(array) / sizeof(array[0])) - 1) {
-                cout << "Sorry, stack is full." << endl;
-            }
-            else {
-                top++;
-                array[top] = num;
-            }
-        }
-
-        int pop() {
-            if (top == -1) {
-                cout << "Sorry, stack is empty." << endl;
-            }
-            else {
-                int popped = array[top];
-                array[top] = 0;
-                top--;
-                return popped;
-            }
-        }
-
-        bool empty() {
-            if (top == -1) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-    };
-
     int num;
-    Stack s;
+    GenericStack<int> s;
     cout << "\nEnter a decimal number: ";
     cin >> num;
     cout << "The Binary representation is: ";
@@ -519,47 +640,7 @@ void deciToBinary() {
 
 void balancedExp() {
 
-    struct Stack {
-        int top = -1;
-        char array[100];
-
-        void push(char symbol) {
-            if (top == (sizeof(array) / sizeof(array[0])) - 1) {
-                cout << "Sorry, stack is full." << endl;
-            }
-            else {
-                top++;
-                array[top] = symbol;
-            }
-        }
-
-        char pop() {
-            if (top == -1) {
-                cout << "Sorry, stack is empty." << endl;
-            }
-            else {
-                char popped = array[top];
-                array[top] = 0;
-                top--;
-                return popped;
-            }
-        }
-
-        char first() {
-            return array[top];
-        }
-
-        bool empty() {
-            if (top == -1) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-    };
-
-    Stack s;
+    GenericStack<char> s;
     string str;
     cout << "\nEnter the expression: ";
     cin.ignore();
@@ -587,67 +668,12 @@ void balancedExp() {
     }
 }
 
-void InfixtoPostfix() {
-
-    struct Stack {
-        int top = -1;
-        char array[100];
-
-        int prec(char c) {
-            if (c == '^') {
-                return 3;
-            }
-            else if (c == '/' || c == '*') {
-                return 2;
-            }
-            else if (c == '+' || c == '-') {
-                return 1;
-            }
-            else {
-                return -1;
-            }
-        }
-
-        void push(char symbol) {
-            if (top == (sizeof(array) / sizeof(array[0])) - 1) {
-                cout << "Sorry, stack is full." << endl;
-            }
-            else {
-                top++;
-                array[top] = symbol;
-            }
-        }
-
-        char pop() {
-            if (top == -1) {
-                cout << "Sorry, stack is empty." << endl;
-            }
-            else {
-                char popped = array[top];
-                array[top] = 0;
-                top--;
-                return popped;
-            }
-        }
-
-        char first() {
-            return array[top];
-        }
-
-        bool empty() {
-            if (top == -1) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-    };
+void infixtoPostfix() {
 
     string str;
     string postfix = "";
-    Stack s;
-    cout << "Enter an  expression: ";
+    GenericStack<char> s;
+    cout << "Enter an expression: ";
     cin.ignore();
     std::getline(cin, str);
 
@@ -698,179 +724,130 @@ void InfixtoPostfix() {
 
 }
 
-void InfixtoPrefix() {
-
-    struct Stack {
-        int top = -1;
-        char array[100];
-
-        int prec(char c) {
-            if (c == '^') {
-                return 3;
-            }
-            else if (c == '/' || c == '*') {
-                return 2;
-            }
-            else if (c == '+' || c == '-') {
-                return 1;
-            }
-            else {
-                return -1;
-            }
-        }
-
-        void push(char symbol) {
-            if (top == (sizeof(array) / sizeof(array[0])) - 1) {
-                cout << "Sorry, stack is full." << endl;
-            }
-            else {
-                top++;
-                array[top] = symbol;
-            }
-        }
-
-        char pop() {
-            if (top == -1) {
-                cout << "Sorry, stack is empty." << endl;
-            }
-            else {
-                char popped = array[top];
-                array[top] = 0;
-                top--;
-                return popped;
-            }
-        }
-
-        char first() {
-            return array[top];
-        }
-
-        bool empty() {
-            if (top == -1) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-    };
+void infixtoPrefix() {
 
     string str;
-    string postfix = "";
-    Stack s;
-    cout << "Enter an  expression: ";
+    string rev;
+    string prefix = "";
+    GenericStack<char> s;
+    cout << "Enter an expression: ";
     cin.ignore();
-    std::getline(cin, str);
-
-    string rev = "";
-    for (int i = str.length() - 1; i >= 0; i--)
-        rev.push_back(str[i]);
-
-    str = rev;
+    std::getline(cin, rev);
+    for (int i = rev.length() - 1; i >= 0; i--) {
+            str.push_back(rev[i]);
+    }
+    for (int i = 0; i <= str.length()-1; i++) {
+        if (str[i] == '(')
+            str[i] = ')';
+        else if (str[i] == ')')
+            str[i] = '(';
+        else if (str[i] == '{')
+            str[i] = '}';
+        else if (str[i] == '}')
+            str[i] = '{';
+        else if (str[i] == '[')
+            str[i] = ']';
+        else if (str[i] == ']')
+            str[i] = '[';
+    }
 
     for (int i = 0; i < str.length(); i++) {
 
         if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= '0' && str[i] <= '9')) {
-            postfix += str[i];
-        }
-
-        else if (str[i] == ')' || str[i] == '}' || str[i] == ']') {
-            s.push(str[i]);
+            prefix += str[i];
         }
 
         else if (str[i] == '(' || str[i] == '{' || str[i] == '[') {
-            if (str[i] == '(') {
-                while (s.first() != ')') {
-                    postfix += s.pop();
+            s.push(str[i]);
+        }
+
+        else if (str[i] == ')' || str[i] == '}' || str[i] == ']') {
+            if (str[i] == ')') {
+                while ((s.first() != '(') && (!s.empty())) {
+                    prefix += s.pop();
                 }
                 s.pop();
             }
-            else if (str[i] == '{') {
-                while (s.first() != '}') {
-                    postfix += s.pop();
+            else if (str[i] == '}') {
+                while ((s.first() != '{') && (!s.empty())) {
+                    prefix += s.pop();
                 }
                 s.pop();
             }
-            else if (str[i] == '[') {
-                while (s.first() != ']') {
-                    postfix += s.pop();
+            else if (str[i] == ']') {
+                while ((s.first() != '[') && (!s.empty())) {
+                    prefix += s.pop();
                 }
                 s.pop();
             }
         }
 
         else {
-            while (!s.empty() && s.prec(str[i]) <= s.prec(s.first())) {
-                postfix += s.pop();
+            if (s.empty()) {
+                s.push(str[i]);
             }
-            s.push(str[i]);
+            else {
+                if (s.prec(str[i]) > s.prec(s.first())) {
+                    s.push(str[i]);
+                }
+                else if ((s.prec(str[i]) == s.prec(s.first())) && (str[i] == '^')) {
+                    while ((s.prec(str[i]) == s.prec(s.first())) && (str[i] == '^')) {
+                        prefix += s.first();
+                        s.pop();
+                    }
+                    s.push(str[i]);
+                }
+                else if (s.prec(str[i]) == s.prec(s.first())) {
+                    s.push(str[i]);
+                }
+                else {
+                    while (!s.empty() && s.prec(str[i]) <= s.prec(s.first())) {
+                        prefix += s.pop();
+                    }
+                    s.push(str[i]);
+                }
+            }
         }
     }
 
     while (!s.empty()) {
-        postfix += s.pop();
+        prefix += s.pop();
     }
 
-    string prefix = "";
-    for (int i = postfix.length() - 1; i >= 0; i--)
-        prefix.push_back(postfix[i]);
+    std::reverse(prefix.begin(), prefix.end());
     cout << prefix << endl << endl;
 
 }
 
-void EvaluatePostfix() {
+void evaluatePostfix() {
 
-    struct Stack {
-        int top = -1;
-        int array[100];
-
-        void push(int symbol) {
-            if (top == (sizeof(array) / sizeof(array[0])) - 1) {
-                cout << "Sorry, stack is full." << endl;
-            }
-            else {
-                top++;
-                array[top] = symbol;
-            }
-        }
-
-        int pop() {
-            if (top == -1) {
-                cout << "Sorry, stack is empty." << endl;
-            }
-            else {
-                int popped = array[top];
-                array[top] = 0;
-                top--;
-                return popped;
-            }
-        }
-
-        bool empty() {
-            if (top == -1) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-    };
-
-    Stack s;
-    int answer;
+    int answer = 0;
+    GenericStack<int> s;
     string str = "";
+    cout << "\nSeparate with spaces like: 4 55 + 62 23 - *" << endl;
     cout << "Enter a postfix expression: ";
     cin.ignore();
     std::getline(cin, str);
-    
 
-    for (int i = 0; i < str.length()-1; i++) {
+
+    for (int i = 0; i < str.length(); i++) {
 
         if (isdigit(str[i])) {
-            int temp = str[i] - '0';
-            s.push(temp);
+            string temp = "";
+            while (isdigit(str[i])) {
+                temp += str[i];
+                i++;
+            }
+            int num = std::stoi(temp);
+            s.push(num);
         }
+
+        else if (str[i] == ' ') {
+            continue;
+        }
+
         else {
+
             int  b = s.pop();
             int a = s.pop();
             if (str[i] == '+') {
@@ -892,7 +869,98 @@ void EvaluatePostfix() {
         }
     }
 
-    cout << "The answer is: " << s.pop() << endl << endl;
-    
+    cout << "The answer is: " << answer << endl << endl;
+}
+
+void towerOfHanoi() {
+
+    GenericStack <int> s1, s2, s3;
+
+    int n;
+    cout << "\nEnter the number of Disks: ";
+    cin >> n;
+    for (int i = n; i >= 1; i--) {
+        s1.push(i);
+    }
+    cout << endl;
+
+    for (int i = 0; i < (pow(2, n)); i++) {
+
+        s1.display(1);
+        s2.display(2);
+        s3.display(3);
+        cout << endl << endl;
+
+        if (i % 2 == 0) {
+            if (s1.first() == 1)
+                s3.push(s1.pop());
+            else if (s2.first() == 1)
+                s1.push(s2.pop());
+            else if (s3.first() == 1)
+                s2.push(s3.pop());
+        }
+        else {
+
+            if (s1.first() == 1) {
+                if (!s2.empty() && !s3.empty()) {
+                    if (s2.first() < s3.first()) {
+                        s3.push(s3.pop());
+                        s3.push(s2.pop());
+                    }
+                    else if (s2.first() > s3.first()) {
+                        s2.push(s2.pop());
+                        s2.push(s3.pop());
+                    }
+                }
+                else if (s3.empty()) {
+                    s3.push(s2.pop());
+                }
+                else if (s2.empty()) {
+                    s2.push(s3.pop());
+                }
+            }
+
+            else if (s2.first() == 1) {
+                if (!s1.empty() && !s3.empty()) {
+                    if (s1.first() < s3.first()) {
+                        s3.push(s3.pop());
+                        s3.push(s1.pop());
+                    }
+                    else if (s1.first() > s3.first()) {
+                        s1.push(s1.pop());
+                        s1.push(s3.pop());
+                    }
+                }
+                else if (s3.empty()) {
+                    s3.push(s1.pop());
+                }
+                else if (s1.empty()) {
+                    s1.push(s3.pop());
+                }
+            }
+
+            else if (s3.first() == 1) {
+                if (!s1.empty() && !s2.empty()) {
+                    if (s1.first() < s2.first()) {
+                        s2.push(s2.pop());
+                        s2.push(s1.pop());
+                    }
+                    else if (s1.first() > s2.first()) {
+                        s1.push(s1.pop());
+                        s1.push(s2.pop());
+                    }
+                }
+                else if (s2.empty()) {
+                    s2.push(s1.pop());
+                }
+                else if (s1.empty()) {
+                    s1.push(s2.pop());
+                }
+            }
+
+        }
+
+    }
 
 }
+
