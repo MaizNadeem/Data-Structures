@@ -8,6 +8,7 @@ using namespace std;
 void basicTasks();
 void structsAndArrays2D();
 void stackApplications();
+void queueApplications();
 
 void factorial();
 void fibonacci();
@@ -29,6 +30,7 @@ void infixtoPostfix();
 void infixtoPrefix();
 void evaluatePostfix();
 void towerOfHanoi();
+void trafficLights();
 
 
 int main() {
@@ -37,7 +39,7 @@ int main() {
 
     do {
         cout << "\nSelect a category:" << endl;
-        cout << "\n\t1: Basic Tasks.\n\t2: Structs and 2D Arrays.\n\t3: Stack Applications\n\t0: Exit." << endl << endl;
+        cout << "\n\t1: Basic Tasks.\n\t2: Structs and 2D Arrays.\n\t3: Stack Applications.\n\t4: Queue Applications.\n\t0: Exit." << endl << endl;
 
         cin >> num;
 
@@ -53,12 +55,15 @@ int main() {
         case 3:
             stackApplications();
             break;
+        case 4:
+            queueApplications();
+            break;
         case 0:
             break;
         default:
             break;
         }
-        if (!(num >= 0 && num <= 3))
+        if (!(num >= 0 && num <= 4))
             cout << "\nCorresponding number is incorrect.";
 
     } while (num != 0);
@@ -191,6 +196,32 @@ void stackApplications() {
         }
 
         if (!(num <= 6 && num >= 0))
+            std::cout << "\nCorresponding number is incorrect." << endl;
+    } while (num != 0);
+}
+
+void queueApplications() {
+    int num;
+
+    do {
+        std::cout << "\nEnter the corresponding number: " << endl;
+        std::cout << "\n\t1: Traffic Lights.\n\t0: Main Menu." << endl << endl;
+
+        std::cin >> num;
+
+        system("CLS");
+
+        switch (num) {
+        case 1:
+            trafficLights();
+            break;
+        case 0:
+            break;
+        default:
+            break;
+        }
+
+        if (!(num <= 1 && num >= 0))
             std::cout << "\nCorresponding number is incorrect." << endl;
     } while (num != 0);
 }
@@ -578,7 +609,7 @@ public:
 
     void push(T num) {
         if (top == (sizeof(array) / sizeof(array[0])) - 1) {
-            cout << "Sorry, stack is full." << endl;
+            cout << "Stack is full." << endl;
         }
         else {
             top++;
@@ -588,6 +619,7 @@ public:
 
     T pop() {
         if (top == -1) {
+            cout << "Stack is empty." << endl;
         }
         else {
             T popped = array[top];
@@ -734,9 +766,9 @@ void infixtoPrefix() {
     cin.ignore();
     std::getline(cin, rev);
     for (int i = rev.length() - 1; i >= 0; i--) {
-            str.push_back(rev[i]);
+        str.push_back(rev[i]);
     }
-    for (int i = 0; i <= str.length()-1; i++) {
+    for (int i = 0; i <= str.length() - 1; i++) {
         if (str[i] == '(')
             str[i] = ')';
         else if (str[i] == ')')
@@ -962,5 +994,133 @@ void towerOfHanoi() {
 
     }
 
+}
+
+template <class T> class GenericQueue {
+
+public:
+    int front = -1;
+    int rear = -1;
+    int size = 4;
+    T array[4];
+    
+public:
+    void enqueue(T value) {
+        if ((front == 0 && rear == size - 1) || (front == rear + 1)) {
+            cout << "Queue Overflow" << endl;
+        }
+        else if (front == -1) {
+            front = 0;
+            rear = 0;
+            array[rear] = value;
+        }
+        else {
+            if (rear == size - 1) {
+                rear = 0;
+            }
+            else {
+                rear++;
+            }
+            array[rear] = value;
+        }
+    }
+
+    T dequeue() {
+        T value = 0;
+        if (front == -1 && rear == -1) {
+            cout << "Queue Underflow" << endl;
+        }
+        else if (front == rear) {
+            value  = array[front];
+            array[front] = 0;
+            front = -1;
+            rear = -1;
+        }
+        else if (front > rear) {
+            if (front == size - 1) {
+                value = array[front];
+                array[front] = 0;
+                front = 0;
+            }
+            else {
+                value = array[front];
+                array[front] = 0;
+                front++;
+            }
+        }
+        else if (front < rear) {
+            value = array[front];
+            array[front] = 0;
+            front++;
+        }
+        return value;
+    }
+
+    void display() {
+        int f = front;
+        int r = rear;
+        if (f == r) {
+            cout << array[f] << " ";
+        }
+        else if (f > r) {
+            while ((f > r) && (f != size-1)) {
+                cout << array[f] << " ";
+                f++;
+            }
+            cout << array[f] << " ";
+            f = 0;
+            while (f <= r) {
+                cout << array[f] << " ";
+                f++;
+            }
+        }
+        else if (f < r) {
+            while (f < r) {
+                cout << array[f] << " ";
+                f++;
+            }
+            cout << array[f] << " ";
+        }
+    }
+};
+
+void trafficLights() {
+    GenericQueue <int> q;
+
+    for (int i = 0; i < q.size; i++) {
+        q.enqueue(0);
+    }
+    for (int i = 0; i < q.size; i++) {
+        q.dequeue();
+    }
+
+    cout << endl;
+    cout << "At 0:" << endl;
+    for (int i = 0; i < 4; i++) {
+        cout << q.array[i] << " ";
+    }
+    cout << endl;
+
+    q.enqueue(1);
+
+    cout << endl;
+    cout << "At 1:" << endl;
+    for (int i = 0; i < 4; i++) {
+        cout << q.array[i] << " ";
+    }
+    cout << endl;
+
+    for (int i = 1; i <= 7; i++) {
+
+        q.enqueue(1);
+        q.dequeue();
+
+        cout << endl;
+        cout << "At " << i + 1 << ":" << endl;
+        for (int j=0; j<4; j++) {
+            cout << q.array[j] << " ";
+        }
+        cout << endl;
+    }
 }
 
