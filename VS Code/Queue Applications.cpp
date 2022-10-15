@@ -144,3 +144,65 @@ void trafficLights() {
     }
 }
 
+template <class T> class PriorityQueue {
+
+public:
+    int front = -1;
+    int rear = -1;
+    int size = 50;
+    T array[50];
+
+public:
+    void enqueue(T value) {
+        if ((front == 0 && rear == size - 1) || (front == rear + 1)) {
+            cout << "Queue Overflow" << endl;
+        }
+        else if (front == -1) {
+            front = 0;
+            rear = 0;
+            array[rear] = value;
+        }
+        else {
+            if (rear == size - 1) {
+                rear = 0;
+            }
+            else {
+                rear++;
+            }
+            array[rear] = value;
+        }
+    }
+
+    T dequeue() {
+        T value = 0;
+        if (front == -1) {
+            cout << "Queue Underflow" << endl;
+        }
+        else if (front == rear) {
+            value = array[front];
+            array[front] = 0;
+            front = -1;
+            rear = -1;
+        }
+        else {
+            value = array[front];
+            array[front] = 0;
+            front = (front + 1) % size;
+        }
+        return value;
+    }
+
+    void display() {
+        int f = front;
+        int r = rear;
+        if (f == -1) {
+            cout << "Queue is Empty." << endl;
+        }
+        else {
+            int i;
+            for (i = front; i != rear; i = (i + 1) % size)
+                cout << array[i] << " ";
+            cout << array[i] << endl;
+        }
+    }
+};
