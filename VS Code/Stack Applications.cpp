@@ -56,9 +56,18 @@ void stackApplications() {
 
 template <class T> class GenericStack {
     int top = -1;
-    T array[50];
+    int size;
+    T* array = new T[size];
 
 public:
+
+    GenericStack(int size) {
+        this->size = size;
+    }
+
+    ~GenericStack() {
+        delete[] array;
+    }
 
     int prec(char c) {
         if (c == '^') {
@@ -123,7 +132,7 @@ public:
 void deciToBinary() {
 
     int num;
-    GenericStack<int> s;
+    GenericStack<int> s(50);
     cout << "\nEnter a decimal number: ";
     cin >> num;
     cout << "The Binary representation is: ";
@@ -140,7 +149,7 @@ void deciToBinary() {
 
 void balancedExp() {
 
-    GenericStack<char> s;
+    GenericStack<char> s(50);
     string str;
     cout << "\nEnter the expression: ";
     cin.ignore();
@@ -172,7 +181,7 @@ void infixtoPostfix() {
 
     string str;
     string postfix = "";
-    GenericStack<char> s;
+    GenericStack<char> s(50);
     cout << "Enter an expression: ";
     cin.ignore();
     std::getline(cin, str);
@@ -229,7 +238,7 @@ void infixtoPrefix() {
     string str;
     string rev;
     string prefix = "";
-    GenericStack<char> s;
+    GenericStack<char> s(50);
     cout << "Enter an expression: ";
     cin.ignore();
     std::getline(cin, rev);
@@ -322,7 +331,7 @@ void infixtoPrefix() {
 void evaluatePostfix() {
 
     int answer = 0;
-    GenericStack<int> s;
+    GenericStack<int> s(50);
     string str = "";
     cout << "\nSeparate with spaces like: 4 55 + 62 23 - *" << endl;
     cout << "Enter a postfix expression: ";
@@ -374,7 +383,7 @@ void evaluatePostfix() {
 
 void towerOfHanoi() {
 
-    GenericStack <int> s1, s2, s3;
+    GenericStack <int> s1(50), s2(50), s3(50);
 
     int n;
     cout << "\nEnter the number of Disks: ";

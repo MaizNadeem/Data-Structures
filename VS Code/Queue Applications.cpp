@@ -7,6 +7,8 @@ using namespace std;
 
 void queueApplications();
 void trafficLights();
+void priorityFunc();
+void dequeFunc();
 
 int main() {
 
@@ -20,7 +22,7 @@ void queueApplications() {
 
     do {
         std::cout << "\nEnter the corresponding number: " << endl;
-        std::cout << "\n\t1: Traffic Lights.\n\t0: Main Menu." << endl << endl;
+        std::cout << "\n\t1: Traffic Lights.\n\t2: Priority Queue.\n\t3: Deque (Double Ended Queue).\n\t0: Main Menu." << endl << endl;
 
         std::cin >> num;
 
@@ -30,13 +32,19 @@ void queueApplications() {
         case 1:
             trafficLights();
             break;
+        case 2:
+            priorityFunc();
+            break;
+        case 3:
+            dequeFunc();
+            break;
         case 0:
             break;
         default:
             break;
         }
 
-        if (!(num <= 1 && num >= 0))
+        if (!(num <= 2 && num >= 0))
             std::cout << "\nCorresponding number is incorrect." << endl;
     } while (num != 0);
 }
@@ -47,9 +55,18 @@ public:
     int front = -1;
     int rear = -1;
     int size = 4;
-    T array[4];
+    T* array = new T[size];
 
 public:
+
+    GenericQueue(int size) {
+        this->size = size;
+    }
+
+    ~GenericQueue() {
+        delete[] array;
+    }
+
     void enqueue(T value) {
         if ((front == 0 && rear == size - 1) || (front == rear + 1)) {
             cout << "Queue Overflow" << endl;
@@ -90,9 +107,7 @@ public:
     }
 
     void display() {
-        int f = front;
-        int r = rear;
-        if (f == -1) {
+        if (front == -1) {
             cout << "Queue is Empty." << endl;
         }
         else {
@@ -105,7 +120,7 @@ public:
 };
 
 void trafficLights() {
-    GenericQueue <int> q;
+    GenericQueue <int> q(4);
 
     for (int i = 0; i < q.size; i++) {
         q.enqueue(0);
@@ -115,7 +130,7 @@ void trafficLights() {
     }
 
     cout << endl;
-    cout << "At 0:" << endl;
+    cout << "\tAt 0->\t";
     for (int i = 0; i < 4; i++) {
         cout << q.array[i] << " ";
     }
@@ -124,7 +139,7 @@ void trafficLights() {
     q.enqueue(1);
 
     cout << endl;
-    cout << "At 1:" << endl;
+    cout << "\tAt 1->\t";
     for (int i = 0; i < 4; i++) {
         cout << q.array[i] << " ";
     }
@@ -136,7 +151,7 @@ void trafficLights() {
         q.dequeue();
 
         cout << endl;
-        cout << "At " << i + 1 << ":" << endl;
+        cout << "\tAt " << i + 1 << "->\t";
         for (int j = 0; j < 4; j++) {
             cout << q.array[j] << " ";
         }
@@ -150,9 +165,20 @@ public:
     int front = -1;
     int rear = -1;
     int size = 50;
-    T array[50];
+    T* array = new T[size];
 
 public:
+
+    PriorityQueue(int size) {
+        this->size = size;
+        for (int i = 0; i < size; i++)
+            array[i] = 9999;
+    }
+
+    ~PriorityQueue() {
+        delete[] array;
+    }
+
     void enqueue(T value) {
         if ((front == 0 && rear == size - 1) || (front == rear + 1)) {
             cout << "Queue Overflow" << endl;
@@ -171,6 +197,8 @@ public:
             }
             array[rear] = value;
         }
+
+        std::sort(array, array + size);
     }
 
     T dequeue() {
@@ -193,9 +221,7 @@ public:
     }
 
     void display() {
-        int f = front;
-        int r = rear;
-        if (f == -1) {
+        if (front == -1) {
             cout << "Queue is Empty." << endl;
         }
         else {
@@ -206,3 +232,92 @@ public:
         }
     }
 };
+
+void priorityFunc() {
+    PriorityQueue <int> q(5);
+    q.enqueue(5);
+    q.enqueue(3);
+    q.enqueue(4);
+    q.enqueue(2);
+    q.enqueue(1);
+    q.dequeue();
+    q.display();
+}
+
+template <class T> class Deque {
+
+public:
+    int front = -1;
+    int rear = -1;
+    int size = 50;
+    T* array = new T[size];
+
+public:
+
+    Deque(int size) {
+        this->size = size;
+        for (int i = 0; i < size; i++)
+            array[i] = 9999;
+    }
+
+    ~Deque() {
+        delete[] array;
+    }
+
+    void enqueue(T value) {
+        if ((front == 0 && rear == size - 1) || (front == rear + 1)) {
+            cout << "Queue Overflow" << endl;
+        }
+        else if (front == -1) {
+            front = 0;
+            rear = 0;
+            array[rear] = value;
+        }
+        else {
+            if (rear == size - 1) {
+                rear = 0;
+            }
+            else {
+                rear++;
+            }
+            array[rear] = value;
+        }
+
+        std::sort(array + size, array);
+    }
+
+    T dequeue() {
+        T value = 0;
+        if (front == -1) {
+            cout << "Queue Underflow" << endl;
+        }
+        else if (front == rear) {
+            value = array[front];
+            array[front] = 0;
+            front = -1;
+            rear = -1;
+        }
+        else {
+            value = array[front];
+            array[front] = 0;
+            front = (front + 1) % size;
+        }
+        return value;
+    }
+
+    void display() {
+        if (front == -1) {
+            cout << "Queue is Empty." << endl;
+        }
+        else {
+            int i;
+            for (i = front; i != rear; i = (i + 1) % size)
+                cout << array[i] << " ";
+            cout << array[i] << endl;
+        }
+    }
+};
+
+void dequeFunc() {
+
+}
