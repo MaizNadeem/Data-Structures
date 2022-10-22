@@ -1,3 +1,5 @@
+![Banner](https://github.com/MaizNadeem/DSA/blob/main/Banner.png)
+
 # Data Structures and Algorithms
 
 Implementation of my DSA course.
