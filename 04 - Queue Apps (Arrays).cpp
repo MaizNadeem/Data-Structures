@@ -10,13 +10,6 @@ void trafficLights();
 void dequeFunc();
 void stackQueue();
 
-int main() {
-
-    queueApplications();
-    return 0;
-
-}
-
 void queueApplications() {
     int num;
 
@@ -164,11 +157,11 @@ void stackQueue() {
 
     class StackQueue {
 
-    public:
+    private:
         GenericQueue <int> q1;
         GenericQueue <int> q2;
-        GenericQueue <int> q;
 
+    public:
         void push(int value) {
             q2.enqueue(value);
 
@@ -176,7 +169,7 @@ void stackQueue() {
                 q2.enqueue(q1.dequeue());
             }
 
-            q = q1;
+            GenericQueue <int> q = q1;
             q1 = q2;
             q2 = q;
         }
