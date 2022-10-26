@@ -61,18 +61,18 @@ public:
     }
 
     void insertAtBegin(T data) {
-        Node<T>* n = new Node<T>(data);
+        Node <T>* n = new Node<T>(data);
         n->next = head;
         head = n;
     }
 
     void insertAtLast(T data) {
-        Node<T>* n = new Node<T>(data);
+        Node <T>* n = new Node<T>(data);
         if (head == NULL) {
             head = n;
             return;
         }
-        Node<T>* temp = head;
+        Node <T>* temp = head;
         while (temp->next != NULL)
             temp = temp->next;
         temp->next = n;
@@ -83,13 +83,35 @@ public:
             cout << "List is empty." << endl;
             return;
         }
-        Node<T>* n = head;
+        Node <T>* n = head;
         head = n->next;
         delete n;
     }
 
+    void deleteAtLast() {
+        Node <T>* n = head;
+        Node <T>* temp = n;
+        if (head == NULL) {
+            cout << "List is empty." << endl;
+            return;
+        }
+        else if (head->next == NULL) {
+            head = NULL;
+            delete n;
+        }
+        else {
+            while (n->next != NULL) {
+                temp = n;
+                n = n->next;
+            }
+            temp->next = NULL;
+            delete n;
+        }
+        
+    }
+
     void displayList() {
-        Node<T>* n = head;
+        Node <T>* n = head;
         while (n != NULL) {
             cout << n->data << " ";
             n = n->next;
@@ -103,15 +125,13 @@ public:
 void linkedListFunc() {
 
     LinkList<int>* list = new LinkList<int>();
-    list->insertAtLast(5);
-    list->insertAtLast(4);
-    list->insertAtLast(3);
+    
+    list->insertAtBegin(5);
     list->insertAtBegin(6);
-    list->deleteAtBegin();
-    list->deleteAtBegin();
+    list->insertAtBegin(7);
+    list->insertAtBegin(8);
+    list->deleteAtLast();
+    list->deleteAtLast();
     list->displayList();
-    list->deleteAtBegin();
-    list->deleteAtBegin();
-    list->deleteAtBegin();
 
 }
