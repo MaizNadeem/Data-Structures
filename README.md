@@ -43,7 +43,10 @@ Implementation of my DSA course.
 
 ### Linked Lists.
 
-- Implementation
+- Traversal.
+- Searching.
+- Sorting (Bubble Sort).
+- Merging.
 
 
 

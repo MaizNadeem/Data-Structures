@@ -51,22 +51,22 @@ public:
     }
 };
 
-template <class T> class LinkList {
+template <class T> class LinkedList {
 
 public:
     Node <T>* head;
 
-    LinkList() {
+    LinkedList() {
         head = NULL;
     }
 
-    void insertAtBegin(T data) {
+    void insertAtBegin (T data) {
         Node <T>* n = new Node<T>(data);
         n->next = head;
         head = n;
     }
 
-    void insertAtLast(T data) {
+    void insertAtLast (T data) {
         Node <T>* n = new Node<T>(data);
         if (head == NULL) {
             head = n;
@@ -78,7 +78,7 @@ public:
         temp->next = n;
     }
 
-    void deleteAtBegin() {
+    void deleteAtBegin () {
         if (head == NULL) {
             cout << "List is empty." << endl;
             return;
@@ -88,34 +88,110 @@ public:
         delete n;
     }
 
-    void deleteAtLast() {
-        Node <T>* n = head;
-        Node <T>* temp = n;
+    void deleteAtLast () {
         if (head == NULL) {
             cout << "List is empty." << endl;
             return;
         }
         else if (head->next == NULL) {
             head = NULL;
-            delete n;
         }
         else {
+            Node <T>* n = head;
+            Node <T>* temp = n;
             while (n->next != NULL) {
                 temp = n;
                 n = n->next;
             }
             temp->next = NULL;
-            delete n;
         }
-        
     }
 
-    void displayList() {
+    void displayList () {
         Node <T>* n = head;
         while (n != NULL) {
             cout << n->data << " ";
             n = n->next;
         }
+    }
+
+    void insertAtIndex (T data, int index) {
+        Node <T>* n = new Node<T>(data);
+        if (index == 1) {
+            n->next = head;
+            head = n;
+        }
+        else {
+            Node <T>* temp1;
+            Node <T>* temp2 = head;
+            for (int i=1; i < index; i++) {
+                if (temp2 == NULL)
+                    break;
+                temp1 = temp2;
+                temp2 = temp2->next;  
+                }
+            }
+            temp1->next = n;
+            n->next = temp2;
+        }
+    }
+
+    void deleteAtIndex (int index) {
+        Node <T>* n = head;
+        if (index == 1) {
+            n = n->next;
+            head = n;
+        }
+        else {
+            Node <T>* temp1;
+            Node <T>* temp2 = head;
+            for (int i=1; i < index; i++) {
+                if (temp2 == NULL) 
+                    break;
+                temp1 = temp2;
+                temp2 = temp2->next;
+            temp1->next = temp2->next;
+            delete temp2;
+        }
+    }
+
+    bool searchNode (int key) {
+        Node <T>* n = head;
+        while (n != NULL) {
+            if (n->data == key)
+                return true;
+            n = n->next;
+        }
+        return false;
+    }
+
+    void sortLinkedList () {
+        if (head == NULL) 
+            return;
+        else {
+            Node <T>* temp1 = head;
+            Node <T>* temp2;
+            T temp;
+            while (temp1 != NULL) {
+                temp2 = temp1->next;
+                while (temp2 != NULL) {
+                    if (temp1->data > temp2->data) {
+                        temp = temp1->data;
+                        temp1->data = temp2->data;
+                        temp2->data = temp;
+                    }
+                    temp2 = temp2->next;
+                }
+                temp1 = temp1->next;
+            }
+        }
+    }
+
+    static void mergeLinkedLists (LinkedList<T>* list1, LinkedList<T>* list2) {
+        Node <T>* n = list1->head;
+        while (n->next != NULL)
+            n = n->next;
+        n->next = list2->head;
     }
 
 };
@@ -124,14 +200,21 @@ public:
 
 void linkedListFunc() {
 
-    LinkList<int>* list = new LinkList<int>();
+    LinkedList<int>* list1 = new LinkedList<int>();
+    LinkedList<int>* list2 = new LinkedList<int>();
     
-    list->insertAtBegin(5);
-    list->insertAtBegin(6);
-    list->insertAtBegin(7);
-    list->insertAtBegin(8);
-    list->deleteAtLast();
-    list->deleteAtLast();
-    list->displayList();
+    list1->insertAtLast(1);
+    list1->insertAtLast(2);
+    list1->insertAtLast(3);
+    list1->insertAtLast(4);
+    list2->insertAtLast(5);
+    list2->insertAtLast(6);
+    list2->insertAtLast(7);
+    list2->insertAtLast(8);
 
+    LinkedList<int>::mergeLinkedLists(list1, list2);
+
+    list1->displayList(); 
+
+    delete list1, list2;
 }
