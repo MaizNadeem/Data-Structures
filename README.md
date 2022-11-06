@@ -44,10 +44,12 @@ Implementation of my DSA course.
 ### Linked Lists.
 
 - Traversal.
+- Inserting/Deleting (At any node).
 - Searching.
 - Sorting (Bubble Sort).
-- Merging.
+- Merging (Static).
+- Reversing (Iterative and Recursive).
+- Circular Linked List.
+- Separate Prime Numbers from a Linked List.
 
-
-
-© M. Maiz Nadeem
+# © M. Maiz Nadeem
