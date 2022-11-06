@@ -4,6 +4,7 @@ using namespace std;
 
 void linkedListApps();
 void linkedListFunc();
+void separatePrimeNumbers();
 
 int main() {
 
@@ -16,7 +17,7 @@ void linkedListApps() {
 
     do {
         cout << "\nEnter the corresponding number: " << endl;
-        cout << "\n\t1: Linked List Implementation.\n\t0: Main Menu." << endl << endl;
+        cout << "\n\t1: Linked List Implementation.\n\t2: Separate Prime Numbers from a list.\n\t0: Main Menu." << endl << endl;
 
         std::cin >> num;
 
@@ -26,13 +27,16 @@ void linkedListApps() {
         case 1:
             linkedListFunc();
             break;
+        case 2:
+            separatePrimeNumbers();
+            break;
         case 0:
             break;
         default:
             break;
         }
 
-        if (!(num <= 3 && num >= 0))
+        if (!(num <= 2 && num >= 0))
             cout << "\nCorresponding number is incorrect." << endl;
     } while (num != 0);
 }
@@ -113,6 +117,7 @@ public:
             cout << n->data << " ";
             n = n->next;
         }
+        cout << endl;
     }
 
     void insertAtIndex(T data, int index) {
@@ -187,7 +192,7 @@ public:
         }
     }
 
-    static void mergeLinkedLists(LinkedList<T>*list1, LinkedList<T>*list2) {
+    static void mergeLinkedLists(LinkedList<T>* list1, LinkedList<T>* list2) {
         Node <T>* n = list1->head;
         while (n->next != NULL)
             n = n->next;
@@ -207,6 +212,16 @@ public:
         head = previous;
     }
 
+    static Node<T>* reverseLinkedList(Node<T>* head) {
+        if (head == NULL || head->next == NULL)
+            return head;
+
+        Node<T>* rest = reverseLinkedList(head->next);
+        head->next->next = head;
+        head->next = NULL;
+        return rest;
+    }
+
 };
 
 
@@ -219,19 +234,81 @@ void linkedListFunc() {
     list1->insertAtLast(1);                     
     list1->insertAtBegin(2);
     list1->insertAtIndex(3, 2);
-    list1->insertAtLast(4);                                 // 2 3 1 4
+    list1->insertAtLast(4);                                               // 2 3 1 4
 
     list2->insertAtLast(5);
     list2->insertAtLast(6);
     list2->insertAtLast(7);
-    list2->insertAtLast(8);                                 // 5 6 7 8
+    list2->insertAtLast(8);                                               // 5 6 7 8
 
-    list1->sortLinkedList();                                // 1 2 3 4
-    LinkedList<int>::mergeLinkedLists(list1, list2);        // 1 2 3 4 5 6 7 8
-    list1->reverseLinkedList();                             // 8 7 6 5 4 3 2 1
-
+    list1->sortLinkedList();                                              // 1 2 3 4
+    LinkedList<int>::mergeLinkedLists(list1, list2);                      // 1 2 3 4 5 6 7 8
+    list1->reverseLinkedList();                                           // 8 7 6 5 4 3 2 1
+    list1->head = LinkedList<int>::reverseLinkedList(list1->head);        // 1 2 3 4 5 6 7 8
 
     list1->displayList();
 
     delete list1, list2;
+}
+
+
+bool checkPrime(int n) {
+
+    if (n == 1 || n == 2)
+        return true;
+    else if (n % 2 == 0)
+        return false;
+    else {
+        for (int i=3; i<n/2; i=i+2) {
+            if (n%i == 0)
+                return false;
+        }
+        return true;
+    }
+
+}
+
+
+void separatePrimeNumbers() {
+
+    LinkedList<int>* list = new LinkedList<int>();
+    LinkedList<int>* prime = new LinkedList<int>();
+
+    for (int i = 1; i<=100; i++) 
+        list->insertAtLast(i);
+
+    while (checkPrime(list->head->data)) {
+        prime->insertAtLast(list->head->data);
+        list->deleteAtBegin();
+    }
+
+    Node<int>* p = NULL;
+    Node<int>* n = list->head;
+    p = n;
+    n = n->next;
+
+    while (n->next->next != NULL) {
+
+        if (checkPrime(n->data)) {
+            prime->insertAtLast(n->data);
+            Node<int>* q = n;
+            p->next = n->next;
+            p = n->next;
+            n = n->next->next;
+            delete q;
+        }
+        else {
+            p = n;
+            n = n->next;
+        }
+    }
+
+    if (checkPrime(n->data)) {
+        prime->insertAtBegin(n->data);
+        list->deleteAtLast();
+    }
+
+    list->displayList();
+    prime->displayList();
+
 }
