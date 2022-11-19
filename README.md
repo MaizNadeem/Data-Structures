@@ -52,4 +52,4 @@ Implementation of my DSA course.
 - Circular Linked List.
 - Separate Prime Numbers from a Linked List.
 
-<h2 align="justify"> © M. Maiz Nadeem </h2>
+<h4 align="center"> © M. Maiz Nadeem </h4>
