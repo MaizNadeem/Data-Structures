@@ -6,51 +6,53 @@ Implementation of my DSA course.
 
 ## Tasks: (Lab)
 
-### Basic Functions.
+#### Basic Functions.
 
-- Factorial.
-- Fibonacci Series.
-- Greatest Common Divisor.
-- Number of Digits.
-- Reverse of Number.
-- Least Common Multiple.
-- 1-100 Prime Numbers.
-- Square Root.
-- Profit and Loss Calculator.
-- Sum of Squares of Integers.
-- Sum of Squared Factorial Inverse.
+1. Factorial.
+2. Fibonacci Series.
+3. Greatest Common Divisor.
+4. Number of Digits.
+5. Reverse of Number.
+6. Least Common Multiple.
+7. 1-100 Prime Numbers.
+8. Square Root.
+9. Profit and Loss Calculator.
+10. Sum of Squares of Integers.
+11. Sum of Squared Factorial Inverse.
 
-### Arrays (1D and 2D) and Structures.
+#### Arrays (1D and 2D) and Structures.
 
-- Matrix Multiplication.
-- Transpose of a Matrix.
-- Structures.
+1. Matrix Multiplication.
+2. Transpose of a Matrix.
+3. Structures.
 
-### Stack and its Applications.
+#### Stack and its Applications.
 
-- Decimal to Binary Converter.
-- Balanced Expression Check.
-- Infix to Postfix.
-- Infix to Prefix.
-- Evaluate Postfix.
-- Tower of Hanoi.
+1. Decimal to Binary Converter.
+2. Balanced Expression Check.
+3. Infix to Postfix.
+4. Infix to Prefix.
+5. Evaluate Postfix.
+6. Tower of Hanoi.
 
-### Queue and its Applications.
+#### Queue and its Applications.
 
-- Traffic Lights Simulator.
-- Deque (Double Ended Queue).
-- Stack from 2 Queues.
+1. Traffic Lights Simulator.
+2. Deque (Double Ended Queue).
+3. Stack from 2 Queues.
 
-### Linked Lists.
+#### Linked Lists.
 
-- Traversal.
-- Inserting/Deleting (At any node).
-- Searching.
-- Sorting (Bubble Sort).
-- Merging (Static).
-- Reversing (Iterative and Recursive).
-- Circular Linked List.
-- Separate Prime Numbers from a Linked List.
+1. Traversal.
+2. Inserting/Deleting (At any node).
+3. Searching.
+4. Sorting (Bubble Sort).
+5. Merging (Static).
+6. Reversing (Iterative and Recursive).
+7. Circular Linked List.
+8. Separate Prime Numbers from a Linked List.
+
+#### Doubly Linked Lists.
 
 <hr></hr>
 <h4 align="center"> © M. Maiz Nadeem </h4>
