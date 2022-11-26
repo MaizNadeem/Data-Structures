@@ -418,6 +418,26 @@ public:
         p->next = list1->head;
     }
 
+    void deleteDuplicates() {
+        Node<T>* p = head;
+        Node<T>* q;
+        Node<T>* r;
+        while (p->next != head) {
+            q = p;
+            while (q->next != p) {
+                r = q;
+                q = q->next;
+                if (q->data == p->data) {
+                    if (q == head) {
+                        head = q->next;
+                    }
+                    r->next = q->next;
+                    q = q->next;
+                }
+            }
+            p = p->next;
+        }
+    }
 };
 
 
@@ -425,6 +445,7 @@ void circularLinkedList() {
 
     CircularLinkedList <int>* c1 = new CircularLinkedList<int>();
     CircularLinkedList <int>* c2 = new CircularLinkedList<int>();
+    CircularLinkedList <int>* c3 = new CircularLinkedList<int>();
 
     c1->insertAtLast(5);
     c1->insertAtLast(6);
@@ -450,5 +471,25 @@ void circularLinkedList() {
     CircularLinkedList<int>::mergeLinkedLists(c1, c2);
 
     c1->displayList();
+
+
+    c3->insertAtLast(1);
+    c3->insertAtLast(1);
+    c3->insertAtLast(2);
+    c3->insertAtLast(2);
+    c3->insertAtLast(3);
+    c3->insertAtLast(3);
+    c3->insertAtLast(4);
+    c3->insertAtLast(4);
+
+    c3->displayList();
+
+    c3->deleteDuplicates();
+
+    c3->displayList();
+
+    delete c1;
+    delete c2;
+    delete c3;
 
 }
