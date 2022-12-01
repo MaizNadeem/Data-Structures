@@ -473,6 +473,7 @@ public:
             p = p->next;
         }
     }
+
 };
 
 
@@ -520,6 +521,10 @@ void circularLinkedList() {
     c3->displayList();
 
     c3->deleteDuplicates();
+
+    c3->displayList();
+
+    c3->parwiseSwap();
 
     c3->displayList();
 

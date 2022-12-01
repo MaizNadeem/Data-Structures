@@ -168,23 +168,73 @@ public:
         }
     }
 
+    static CircularDoublyList* mergeLists(CircularDoublyList* list1, CircularDoublyList* list2) {
+        list1->head->prev->next = list2->head;
+        list1->head->prev = list2->head->prev;
+        list2->head->prev = list1->head->prev;
+        list2->head->prev->next = list1->head;
+        return list1;
+    }
+
+    void pairwiseSwap() {
+        if (head == NULL || head->next == head)
+            return;
+        Node* p = head;
+        while (p->next->next != head) {
+            int temp = p->data;
+            p->data = p->next->data;
+            p->next->data = temp;
+            p = p->next->next;
+        }
+        int temp = p->data;
+        p->data = p->next->data;
+        p->next->data = temp;
+    }
+
+    void deleteDuplicates() {
+        Node* p = head;
+        Node* q;
+        while (p->next != head) {
+            q = p->next;
+            while (q->next != p) {
+                if (q->data == p->data) {
+                    if (q == head) {
+                        head = q->next;
+                    }
+                    q->prev->next = q->next;
+                    q->next->prev = q->prev;
+                }
+                q = q->next;
+            }
+            p = p->next;
+        }
+    }
+
 };
 
 
 void doublylinkedListFunc() {
 
     CircularDoublyList* list = new CircularDoublyList();
+    CircularDoublyList* l = new CircularDoublyList();
 
-    list->insertAtFront(2);
-    list->insertAtFront(1);
+    list->insertAtLast(1);
+    list->insertAtLast(1);
+    list->insertAtLast(2);
+    list->insertAtLast(2);
+    list->insertAtLast(3);
+    list->insertAtLast(3);
     list->insertAtLast(4);
-    list->insertAtLast(5);
-    list->insertAtLast(6);
-    list->deleteAtFront();
-    list->deleteAtLast();
-    list->insertAtData(3, 2);
-    list->insertAtData(6, 5);
-    list->deleteAtData(4);
+    list->insertAtLast(4);
+
+    l->insertAtLast(5);
+    l->insertAtLast(6);
+    l->insertAtLast(7);
+    l->insertAtLast(8);
+
+    list->deleteDuplicates();
+
+    list = CircularDoublyList::mergeLists(list, l);
 
     list->display();
 
