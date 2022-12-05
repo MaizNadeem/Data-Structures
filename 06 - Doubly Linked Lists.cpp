@@ -238,6 +238,10 @@ void doublylinkedListFunc() {
 
     list->display();
 
+    list->insertAtLast(9);
+    list->pairwiseSwap();
+    list->display();
+
     delete list;
 
 }
