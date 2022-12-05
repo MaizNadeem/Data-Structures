@@ -41,7 +41,7 @@ Implementation of my DSA course.
 2. Deque (Double Ended Queue).
 3. Stack from 2 Queues.
 
-#### Linked Lists.
+#### Linked Lists (Simple and Circular).
 
 1. Traversal.
 2. Inserting/Deleting (At any node).
@@ -52,7 +52,11 @@ Implementation of my DSA course.
 7. Circular Linked List.
 8. Separate Prime Numbers from a Linked List.
 
-#### Doubly Linked Lists.
+#### Circular Doubly Linked Lists.
+
+1. Merging (Static).
+2. Pairwise Swap.
+3. Delete Duplicates.
 
 <hr></hr>
 <h4 align="center"> © M. Maiz Nadeem </h4>
