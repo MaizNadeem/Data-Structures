@@ -224,23 +224,18 @@ public:
         return rest;
     }
 
-    void parwiseSwap() {
+    void pairwiseSwap() {
         if (head == NULL || head->next == NULL)
             return;
         Node<T>* p = head;
-        Node<T>* q = head->next;
-        while (q->next->next != NULL) {
-            T temp = q->data;
-            q->data = p->data;
-            p->data = temp;
-            p = q->next;
-            q = q->next->next;
-            if (q->next == NULL)
+        while (p != NULL) {
+            if (p->next == NULL)
                 break;
+            int temp = p->data;
+            p->data = p->next->data;
+            p->next->data = temp;
+            p = p->next->next;
         }
-        int temp = q->data;
-        q->data = p->data;
-        p->data = temp;
     }
 
 };
@@ -346,7 +341,7 @@ void pairwiseSwapSingle() {
         list->insertAtLast(i);
 
     list->displayList();
-    list->parwiseSwap();
+    list->pairwiseSwap();
     list->displayList();
 
     delete list;
