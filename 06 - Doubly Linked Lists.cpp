@@ -5,12 +5,6 @@ using namespace std;
 void doublylinkedListApps();
 void doublylinkedListFunc();
 
-int main() {
-
-    doublylinkedListApps();
-
-}
-
 void doublylinkedListApps() {
     int num;
 
