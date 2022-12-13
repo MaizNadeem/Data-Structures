@@ -18,6 +18,12 @@ void profitLoss();
 void sumOfSquares();
 void sumOfFactorials();
 
+int main() {
+
+    basicTasks();
+
+}
+
 void basicTasks() {
     int num;
 

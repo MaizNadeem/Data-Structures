@@ -13,6 +13,12 @@ void infixtoPrefix();
 void evaluatePostfix();
 void towerOfHanoi();
 
+int main() {
+
+    stackApplications();
+
+}
+
 void stackApplications() {
     int num;
 

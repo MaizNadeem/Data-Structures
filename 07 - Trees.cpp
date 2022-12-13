@@ -63,6 +63,7 @@ public:
     Tree* search(Tree*, int);
     Tree* deleteNode(Tree*, int);
     Tree* treeMinData(Tree*);
+    bool isBalanced(Tree*, int*);
 };
 
 Tree* Tree::insert(Tree* root, int data) {
@@ -112,7 +113,7 @@ Tree* Tree::search(Tree* root, int data) {
 
 Tree* Tree::treeMinData(Tree* root) {
     Tree* p = root;
-    while (p and p->left != NULL)
+    while (p && p->left != NULL)
         p = p->left;
     return p;
 }
@@ -129,12 +130,10 @@ Tree* Tree::deleteNode(Tree* root, int data) {
             return NULL;
         else if (root->left == NULL) {
             Tree* temp = root->right;
-            delete root;
             return temp;
         }
         else if (root->right == NULL) {
             Tree* temp = root->left;
-            delete root;
             return temp;
         }
         Tree* temp = treeMinData(root->right);
@@ -142,6 +141,24 @@ Tree* Tree::deleteNode(Tree* root, int data) {
         root->right = deleteNode(root->right, temp->data);
     }
     return root;
+}
+
+bool Tree::isBalanced(Tree* root, int* height) {
+    if (root == NULL)
+        return true;
+
+    int lh = 0, rh = 0;
+    if (!(isBalanced(root->left, &lh)))
+        return false;
+    if (!(isBalanced(root->right, &rh)))
+        return false;
+
+    *height = max(lh, rh) + 1;
+
+    if (abs(lh - rh) <= 1)
+        return true;
+    else 
+        return false;
 }
 
 void binarySearchTree() {
@@ -165,7 +182,13 @@ void binarySearchTree() {
     cout << tree->search(tree, 3)->data << endl;
     cout << tree->treeMinData(tree)->data << endl;
 
-    tree->deleteNode(tree, 1);
+    tree = tree->deleteNode(tree, 1);
     tree->inorder(tree);
     cout << endl;
+
+    int height = 0;
+    if (tree->isBalanced(tree, &height))
+        cout << "Balanced" << endl;
+    else 
+        cout << "Not Balanced" << endl;
 }

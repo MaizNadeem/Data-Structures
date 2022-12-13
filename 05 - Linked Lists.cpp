@@ -8,6 +8,12 @@ void separatePrimeNumbers();
 void circularLinkedList();
 void pairwiseSwapSingle();
 
+int main() {
+
+    linkedListApps();
+
+}
+
 void linkedListApps() {
     int num;
 

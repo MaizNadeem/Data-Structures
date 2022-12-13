@@ -10,6 +10,12 @@ void matrixMult();
 void studentsStruct();
 void transpose();
 
+int main() {
+
+    structsAndArrays2D();
+
+}
+
 void structsAndArrays2D() {
     int num;
 

@@ -58,5 +58,15 @@ Implementation of my DSA course.
 2. Pairwise Swap.
 3. Delete Duplicates.
 
+#### Binary Search Trees.
+
+1. Insertion.
+2. Deletion.
+3. Check Balance.
+
+#### Heap Trees.
+
+1. Insertion.
+
 <hr></hr>
 <h4 align="center"> © M. Maiz Nadeem </h4>

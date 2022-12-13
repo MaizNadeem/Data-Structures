@@ -10,6 +10,12 @@ void trafficLights();
 void dequeFunc();
 void stackQueue();
 
+int main() {
+
+    queueApplications();
+
+}
+
 void queueApplications() {
     int num;
 
