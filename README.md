@@ -66,7 +66,12 @@ Implementation of my DSA course.
 
 #### Heap Trees.
 
-1. Insertion.
+1. Insertion/Deletion.
+2. Heap Sort.
+
+#### Sorting Algorithms.
+
+1. Merge Sort.
 
 <hr></hr>
 <h4 align="center"> © M. Maiz Nadeem </h4>

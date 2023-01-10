@@ -7,6 +7,7 @@ void linkedListFunc();
 void separatePrimeNumbers();
 void circularLinkedList();
 void pairwiseSwapSingle();
+void alternateMerge();
 
 int main() {
 
@@ -18,8 +19,8 @@ void linkedListApps() {
     int num;
 
     do {
-        cout << "\nEnter the corresponding number: " << endl;
-        cout << "\n\t1: Linked List Implementation.\n\t2: Separate Prime Numbers from a list.\n\t3: Circular Linked List.\n\t4: Pairwise swap in Single Linked List.\n\t0: Exit." << endl << endl;
+        cout << "\n1: Linked List Implementation.\n2: Separate Prime Numbers from a list.\n3: Circular Linked List.\n4: Pairwise swap in Single Linked List.\n5: Alternate Merge of 2 Linked Lists.\n0: Exit." << endl << endl;
+        cout << "Enter the corresponding number: ";
 
         std::cin >> num;
 
@@ -38,13 +39,16 @@ void linkedListApps() {
         case 4:
             pairwiseSwapSingle();
             break;
+        case 5:
+            alternateMerge();
+            break;
         case 0:
             break;
         default:
             break;
         }
 
-        if (!(num <= 4 && num >= 0))
+        if (!(num <= 5 && num >= 0))
             cout << "\nCorresponding number is incorrect." << endl;
     } while (num != 0);
 }
@@ -354,6 +358,40 @@ void pairwiseSwapSingle() {
 
 }
 
+void alternateMerge() {
+
+    LinkedList<int>* list1 = new LinkedList<int>();
+    LinkedList<int>* list2 = new LinkedList<int>();
+
+    list1->insertAtLast(1);
+    list1->insertAtLast(3);
+    list1->insertAtLast(5);
+    list1->insertAtLast(7);
+    list2->insertAtLast(2);
+    list2->insertAtLast(4);
+    list2->insertAtLast(6);
+    list2->insertAtLast(8);
+
+    list1->displayList();
+    list2->displayList();
+
+    Node <int>* p = list1->head;
+    Node <int>* q = list2->head;
+
+    while (p != NULL || q != NULL) {
+        Node<int>* a = p->next;
+        Node<int>* b = q->next;
+        q->next = p->next;
+        p->next = q;
+        p = a;
+        q = b;
+    }
+    list2->head = q;
+
+    list1->displayList();
+
+}
+
 
 template <class T> class CircularLinkedList {
 
@@ -522,10 +560,6 @@ void circularLinkedList() {
     c3->displayList();
 
     c3->deleteDuplicates();
-
-    c3->displayList();
-
-    c3->parwiseSwap();
 
     c3->displayList();
 
