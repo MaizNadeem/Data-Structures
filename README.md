@@ -69,9 +69,13 @@ Implementation of my DSA course.
 1. Insertion/Deletion.
 2. Heap Sort.
 
-#### Sorting Algorithms.
+#### Searching & Sorting Algorithms.
 
-1. Merge Sort.
+1. Binary Search.
+2. Merge Sort.
+3. Select Sort.
+4. Quick Sort.
+5. Insertion Sort.
 
 <hr></hr>
 <h4 align="center"> © M. Maiz Nadeem </h4>
