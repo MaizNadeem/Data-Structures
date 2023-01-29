@@ -248,6 +248,55 @@ public:
         }
     }
 
+    void abc(Node<T>* head) {
+        Node<T>* p = head;
+        if (p == NULL)
+            return;
+        cout << p->data << " ";
+        if (p->next != NULL)
+            abc(p->next->next);
+        cout << p->data << " ";
+    }
+
+    void swapPointers() {
+
+        if (head == NULL)
+            return;
+
+        int k = 2;
+        int length = 1;
+        Node<T>* len = head;
+
+        while (len != NULL) {
+            len = len->next;
+            length++;
+        }
+        delete len;
+
+        int start = k;
+        int last = length - k;
+
+        Node<T>* p = head;
+        Node<T>* q = head;
+
+        for (int i = 0; i < last-2; i++) {
+            if (i < start-2)
+                p = p->next;
+            q = q->next;
+        }
+
+        Node<T>* temp;
+
+        temp = p->next->next;
+        p->next->next = q->next->next;
+        q->next->next = temp;
+
+        temp = p->next;
+        p->next = q->next;
+        q->next = temp;
+
+    }
+
 };
 
 
@@ -272,6 +321,9 @@ void linkedListFunc() {
     list1->reverseLinkedList();                                           // 8 7 6 5 4 3 2 1
     list1->head = LinkedList<int>::reverseLinkedList(list1->head);        // 1 2 3 4 5 6 7 8
 
+    list1->displayList();
+    list1->abc(list1->head);
+    cout << endl;
     list1->displayList();
 
     delete list1, list2;

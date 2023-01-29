@@ -20,20 +20,20 @@ void algorithms() {
         std::cin >> num;
         system("CLS");
         switch (num) {
-        case 1:
-            mergeSort();
-            break;
-        case 2:
-            selectSort();
-            break;
-        case 3:
-            quickSort();
-            break;
-        case 4:
-            insertionSort();
-            break;
-        default:
-            break;
+            case 1:
+                mergeSort();
+                break;
+            case 2:
+                selectSort();
+                break;
+            case 3:
+                quickSort();
+                break;
+            case 4:
+                insertionSort();
+                break;
+            default:
+                break;
         }
         if (!(num <= 4 && num >= 0))
             cout << "\nCorresponding number is incorrect." << endl;
@@ -44,7 +44,7 @@ void algorithms() {
 int arr[size];
 
 void Merge(int low, int mid, int high) {
-    int t[50];
+    int t[50]{};
     int i = low, j = mid+1, k = 0;
 
     while (i <= mid && j <= high) {
